@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,38 +29,15 @@ class DisplayImages extends StatefulWidget {
 Image_Controller image_controller = Get.put(Image_Controller());
 
 class _DisplayImagesState extends State<DisplayImages> {
-  List item2 = [
-    SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Obx(
-        () => Row(
-          children: image_controller.filter.map(
-            (element) => Padding(
-              padding: const EdgeInsets.only(left: 5, right: 5),
-              child: InkWell(
-                onTap: () {
-                  image_controller.f.value =
-                      image_controller.filter.indexOf(element);
-                },
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: ColorFiltered(
-                    colorFilter: ColorFilter.matrix(element),
-                    child: Image.asset(
-                      "assets/icon_512.png",
-                      fit: BoxFit.fill,
-                      height: 50,
-                      width: 50,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ).toList(),
-        ),
-      ),
-    ),
-  ];
+  double _rotationAngle = 0.0;
+
+  // void _rotateImage() {
+  //   setState(() {
+  //     // Increment the rotation angle by 90 degrees
+  //     _rotationAngle += 90.0;
+  //   });
+  // }
+
   final items = [
     'assets/icon/Filter.svg',
     'assets/icon/Trim.svg',
@@ -88,6 +64,165 @@ class _DisplayImagesState extends State<DisplayImages> {
 
   @override
   Widget build(BuildContext context) {
+    List item2 = [
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Obx(
+              () => Row(
+            children: image_controller.filter
+                .map(
+                  (element) => Padding(
+                padding: const EdgeInsets.only(left: 5, right: 5),
+                child: InkWell(
+                  onTap: () {
+                    image_controller.f.value =
+                        image_controller.filter.indexOf(element);
+                  },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(3),
+                    child: ColorFiltered(
+                      colorFilter: ColorFilter.matrix(element),
+                      child: Image.file(widget
+                          .selectedBytes[image_controller.imageindex.value]
+                          .selectedFile,fit: BoxFit.fill,height:45,width: 30,scale: 5,)
+                    ),
+                  ),
+                ),
+              ),
+            )
+                .toList(),
+          ),
+        ),
+      ),
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Obx(
+              () => Row(
+            children: image_controller.filter
+                .map(
+                  (element) => Padding(
+                padding: const EdgeInsets.only(left: 5, right: 5),
+                child: InkWell(
+                  onTap: () {
+                    image_controller.f.value =
+                        image_controller.filter.indexOf(element);
+                  },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(3),
+                    child: ColorFiltered(
+                        colorFilter: ColorFilter.matrix(element),
+                        child: Image.file(widget
+                            .selectedBytes[image_controller.imageindex.value]
+                            .selectedFile,fit: BoxFit.fill,height:45,width: 30,scale: 5,)
+                    ),
+                  ),
+                ),
+              ),
+            )
+                .toList(),
+          ),
+        ),
+      ),
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Obx(
+              () => Row(
+            children: image_controller.filter
+                .map(
+                  (element) => Padding(
+                padding: const EdgeInsets.only(left: 5, right: 5),
+                child: InkWell(
+                  onTap: () {
+                    image_controller.f.value =
+                        image_controller.filter.indexOf(element);
+                  },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(3),
+                    child: ColorFiltered(
+                        colorFilter: ColorFilter.matrix(element),
+                        child: Image.file(widget
+                            .selectedBytes[image_controller.imageindex.value]
+                            .selectedFile,fit: BoxFit.fill,height:45,width: 30,scale: 5,)
+                    ),
+                  ),
+                ),
+              ),
+            )
+                .toList(),
+          ),
+        ),
+      ),
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Obx(
+              () => Row(
+            children: image_controller.filter
+                .map(
+                  (element) => Padding(
+                padding: const EdgeInsets.only(left: 5, right: 5),
+                child: InkWell(
+                  onTap: () {
+                    image_controller.f.value =
+                        image_controller.filter.indexOf(element);
+                  },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(3),
+                    child: ColorFiltered(
+                        colorFilter: ColorFilter.matrix(element),
+                        child: Image.file(widget
+                            .selectedBytes[image_controller.imageindex.value]
+                            .selectedFile,fit: BoxFit.fill,height:45,width: 30,scale: 5,)
+                    ),
+                  ),
+                ),
+              ),
+            )
+                .toList(),
+          ),
+        ),
+      ),
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Obx(
+              () => Row(
+            children: image_controller.filter
+                .map(
+                  (element) => Padding(
+                padding: const EdgeInsets.only(left: 5, right: 5),
+                child: InkWell(
+                  onTap: () {
+                    widget.selectedBytes[image_controller.imageindex.value].selectedFile.deleteSync(recursive: true);
+                    print("${ widget.selectedBytes[image_controller.imageindex.value].selectedFile.delete()}");
+                    image_controller.f.value =
+                        image_controller.filter.indexOf(element);
+                  },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(3),
+                    child: ColorFiltered(
+                        colorFilter: ColorFilter.matrix(element),
+                        child: Image.file(widget
+                            .selectedBytes[image_controller.imageindex.value]
+                            .selectedFile,fit: BoxFit.fill,height:45,width: 30,scale: 5,)
+                    ),
+                  ),
+                ),
+              ),
+            )
+                .toList(),
+          ),
+        ),
+      ),
+      Text("Flow Button",style: TextStyle(fontSize: 25,color: Colors.black,),),
+      Text("Cutout Button",style: TextStyle(fontSize: 25,color: Colors.black,),),
+      Text("Crop Button",style: TextStyle(fontSize: 25,color: Colors.black,),),
+      Text("rotete Button",style: TextStyle(fontSize: 25,color: Colors.black,),),
+      Text("Mirror  Button",style: TextStyle(fontSize: 25,color: Colors.black,),),
+      Text("Flip  Button",style: TextStyle(fontSize: 25,color: Colors.black,),),
+      Text("Fit  Button",style: TextStyle(fontSize: 25,color: Colors.black,),),
+      Text("BG  Button",style: TextStyle(fontSize: 25,color: Colors.black,),),
+      Text("Border  Button",style: TextStyle(fontSize: 25,color: Colors.black,),),
+      Text("Blur  Button",style: TextStyle(fontSize: 25,color: Colors.black,),),
+    ];
     return Scaffold(
       appBar: AppBar(title: const Text('Selected images/videos')),
       body:
@@ -119,24 +254,37 @@ class _DisplayImagesState extends State<DisplayImages> {
           //   children: widget.selectedBytes.map((e) => Image.file(File('$e'))).toList(),
           // )
 
-          Stack(
-            children: [
-              Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-            Align(
-                alignment: Alignment.center,
-                child: Container(
-                  height: 40.h,
-                  width: 80.w,
-                  color: Colors.black12,
-                  child: ColorFiltered(
-                      colorFilter: ColorFilter.matrix(
-                          image_controller.filter[image_controller.f.value]),
-                      child: Image.file(widget.selectedBytes[0].selectedFile)),
-                )),
+          Stack(children: [
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Obx(
+              () => Align(
+                  alignment: Alignment.center,
+                  child: Container(
+                    height: 40.h,
+                    width: 80.w,
+                    color: Colors.black12,
+                    child: ColorFiltered(
+                        colorFilter: ColorFilter.matrix(
+                            image_controller.filter[image_controller.f.value]),
+                        child: Transform.rotate(
+                          angle: _rotationAngle * (3.1415926535897932 / 180),
+
+                          child: Transform.scale(
+                            scaleX: image_controller.mirror.value?-1:1,
+                            child: Transform.scale(
+                            scale: image_controller.filp.value?-1:1,
+                              child: Image.file(widget
+                                  .selectedBytes[image_controller.imageindex.value]
+                                  .selectedFile),
+                            ),
+                          ),
+                        )),
+                  )),
+            ),
             Container(
               height: 50,
               width: double.infinity,
@@ -148,49 +296,36 @@ class _DisplayImagesState extends State<DisplayImages> {
                   if (!selectedByte.isThatImage) {
                     return _DisplayVideo(selectedByte: selectedByte);
                   } else {
-                    return Image.file(
-                      selectedByte.selectedFile,
-                      fit: BoxFit.fill,
+                    return InkWell(
+                      onTap: () {
+                        image_controller.imageindex.value = index;
+                      },
+                      child: Image.file(
+                        selectedByte.selectedFile,
+                        fit: BoxFit.fill,
+                      ),
                     );
                   }
                 },
                 itemCount: widget.selectedBytes.length,
               ),
             ),
-        ],
-      ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: SizedBox(
-                  height: 70, // Adjust as needed
-                  child:
-                  ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: item2.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return
-                        InkWell(
-                        onTap: () {
-                          setState(() {
-                            _selectedIndex = index;
-                          });
-                        },
-                        child: Container(
-                          alignment: Alignment.center,
-                          padding: EdgeInsets.symmetric(horizontal: 16),
-                          color: index == _selectedIndex ? Colors.blue : Colors.black87,
-                          child: SvgPicture.asset(
-                            "${item2[index]}",
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              )
 
-      ]
+          ],
+        ),
+
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            height: MediaQuery.of(context).size.height / 12,
+            width: double.infinity,
+            color: Colors.black26,
+            child: item2[_selectedIndex],
+
+
           ),
+        ),
+      ]),
       bottomNavigationBar: BottomAppBar(
         child: SizedBox(
           height: 56, // Adjust as needed
@@ -202,6 +337,29 @@ class _DisplayImagesState extends State<DisplayImages> {
                 onTap: () {
                   setState(() {
                     _selectedIndex = index;
+                    if(_selectedIndex == 8)
+                      {
+                        _rotationAngle += 90.0;
+
+                        print("hyy");
+
+                      }
+                    else if(_selectedIndex == 9)
+                      {
+                        image_controller.mirror.value = !image_controller.mirror.value;
+
+
+                      }
+                    else if(_selectedIndex == 10){
+                      image_controller.filp.value = !image_controller.filp.value;
+
+                      print("${_selectedIndex}");
+
+                    }
+                    else if(_selectedIndex ==11)
+                      {
+
+                      }
                   });
                 },
                 child: Container(

@@ -741,19 +741,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+import 'package:vn_app/Screen/View/Bottom_Navigator%20_demo_page/Image_rotead.dart';
 import 'package:vn_app/Screen/View/Bottom_Screen/View/Bottom_Screen.dart';
 import 'package:vn_app/Screen/View/Home_Screen/Get_Image.dart';
 import 'package:vn_app/Screen/View/Home_Screen/Home_Screen.dart';
 import 'package:vn_app/Screen/View/Splash_Screen.dart';
+import 'package:vn_app/demo_prectise.dart';
 
-import 'Screen/View/Home_Screen/DisplayImages.dart';
 import 'Screen/View/Setting_Screen.dart';
 
 void main() {
   runApp(
     Sizer(
       builder: (context, orientation, deviceType) => GetMaterialApp(
-        initialRoute: '/',
+        initialRoute: 'D',
         debugShowCheckedModeBanner: false,
         routes: {
           // '/': (context) => Setting_Screen(),
@@ -762,6 +763,8 @@ void main() {
           'h': (context) => Home_Screen(),
           's': (context) => Setting_Screen(),
           'g': (context) => Get_Image(),
+          'D': (context) => Demo_Practice(),
+          'R': (context) => MyImageRotator(),
 
         },
       ),
@@ -769,6 +772,248 @@ void main() {
   );
 }
 
+
+//
+// import 'package:flutter/material.dart';
+//
+// void main() {
+//   runApp(MyApp());
+// }
+//
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: ZoomOutAnimation(),
+//     );
+//   }
+// }
+//
+// class ZoomOutAnimation extends StatefulWidget {
+//   @override
+//   _ZoomOutAnimationState createState() => _ZoomOutAnimationState();
+// }
+//
+// class _ZoomOutAnimationState extends State<ZoomOutAnimation> {
+//   double _scale = 1.0;
+//
+//   void _startAnimation() {
+//     setState(() {
+//       _scale = 0.5; // Set scale factor for zoom out
+//     });
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Zoom Out Animation'),
+//       ),
+//       body: Center(
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: <Widget>[
+//             AnimatedContainer(
+//               duration: Duration(seconds: 1), // Set animation duration
+//               curve: Curves.easeInOut, // Set animation curve
+//               transform: Matrix4.identity()..scale(_scale),
+//               child: FlutterLogo(
+//                 size: 200,
+//               ),
+//             ),
+//             SizedBox(height: 20),
+//             ElevatedButton(
+//               onPressed: _startAnimation,
+//               child: Text('Zoom Out'),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+
+
+// import 'package:flutter/material.dart';
+//
+// void main() {
+//   runApp(MyApp());
+// }
+//
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: ImageAnimation(),
+//     );
+//   }
+// }
+//
+// class ImageAnimation extends StatefulWidget {
+//   @override
+//   _ImageAnimationState createState() => _ImageAnimationState();
+// }
+//
+// class _ImageAnimationState extends State<ImageAnimation> {
+//   double _scale = 1.0;
+//   Offset _offset = Offset.zero;
+//
+//   void _zoomIn() {
+//     setState(() {
+//       _scale = 2.0;
+//     });
+//   }
+//
+//   void _zoomOut() {
+//     setState(() {
+//       _scale = 1.0;
+//     });
+//   }
+//
+//   void _moveRight() {
+//     setState(() {
+//       _offset = Offset(_offset.dx + 50, _offset.dy);
+//     });
+//   }
+//
+//   void _moveLeft() {
+//     setState(() {
+//       _offset = Offset(_offset.dx - 50, _offset.dy);
+//     });
+//   }
+//
+//   void _moveDown() {
+//     setState(() {
+//       _offset = Offset(_offset.dx, _offset.dy + 50);
+//     });
+//   }
+//
+//   void _moveUp() {
+//     setState(() {
+//       _offset = Offset(_offset.dx, _offset.dy - 50);
+//     });
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Image Animation'),
+//       ),
+//       body: Center(
+//         child: GestureDetector(
+//           onDoubleTap: _zoomIn,
+//           onLongPress: _zoomOut,
+//           onHorizontalDragUpdate: (details) {
+//             setState(() {
+//               _offset = Offset(_offset.dx + details.delta.dx, _offset.dy);
+//             });
+//           },
+//           onVerticalDragUpdate: (details) {
+//             setState(() {
+//               _offset = Offset(_offset.dx, _offset.dy + details.delta.dy);
+//             });
+//           },
+//           child: AnimatedContainer(
+//             duration: Duration(milliseconds: 300),
+//             transform: Matrix4.identity()
+//               ..translate(_offset.dx, _offset.dy)
+//               ..scale(_scale),
+//             child: Image.asset('assets/image.jpg'), // Replace with your image
+//           ),
+//         ),
+//       ),
+//       persistentFooterButtons: [
+//         ElevatedButton(
+//           onPressed: _moveLeft,
+//           child: Icon(Icons.arrow_back),
+//         ),
+//         ElevatedButton(
+//           onPressed: _moveUp,
+//           child: Icon(Icons.arrow_upward),
+//         ),
+//         ElevatedButton(
+//           onPressed: _moveDown,
+//           child: Icon(Icons.arrow_downward),
+//         ),
+//         ElevatedButton(
+//           onPressed: _moveRight,
+//           child: Icon(Icons.arrow_forward),
+//         ),
+//       ],
+//     );
+//   }
+// }
+
+
+
+
+
+
+
+
+//
+// import 'dart:typed_data';
+//
+// import 'package:flutter/material.dart';
+// import 'package:crop_your_image/crop_your_image.dart';
+//
+// void main() {
+//   runApp(MyApp());
+// }
+//
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Image Cropper',
+//       theme: ThemeData(
+//         primarySwatch: Colors.blue,
+//       ),
+//       home: ImageCropperPage(),
+//     );
+//   }
+// }
+//
+// class ImageCropperPage extends StatefulWidget {
+//   @override
+//   _ImageCropperPageState createState() => _ImageCropperPageState();
+// }
+//
+// class _ImageCropperPageState extends State<ImageCropperPage> {
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Image Cropper'),
+//       ),
+//       body: Center(
+//         child: AspectRatio(
+//           aspectRatio: 16 / 9, // Set your desired aspect ratio here
+//           child: Crop(
+//             image: Image.asset('assets/your_image.jpg').image, // Replace 'assets/your_image.jpg' with your image path
+//             aspectRatio: 16 / 9, onCropped: (Uint8List value) {  }, // Set your desired aspect ratio here
+//           ),
+//         ),
+//       ),
+//       floatingActionButton: FloatingActionButton(
+//         onPressed: () async {
+//           // Get the cropped image
+//           final croppedFile = await _cropKey.currentState!.cropCompleted(
+//             maxWidth: 1920,
+//             maxHeight: 1080,
+//             quality: 100,
+//           );
+//           // Do something with the cropped image file
+//           print('Cropped image path: ${croppedFile?.path}');
+//         },
+//         child: Icon(Icons.crop),
+//       ),
+//     );
+//   }
+// }
 
 
 

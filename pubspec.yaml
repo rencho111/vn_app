@@ -41,6 +41,7 @@ dependencies:
   flutter_svg: any
   image_picker: any
   image_picker_plus: any
+  crop_your_image: any
   sizer: any
 
 

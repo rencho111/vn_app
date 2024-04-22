@@ -6,4 +6,7 @@ class Image_Controller
 {
   RxList<List<double>> filter = [Identity,Grayscale,Invert,Zero,Scaling,Translate,Shear,Blur,Edge,Indigo,Sterling,Orion,Griffin,Jasper,Sylvan,Rowan].obs;
   RxInt f = 0.obs;
+  RxInt imageindex = 0.obs;
+  RxBool mirror = false.obs;
+  RxBool filp = false.obs;
 }
